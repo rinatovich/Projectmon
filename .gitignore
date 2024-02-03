@@ -2,3 +2,4 @@
 /front/node_modules
 /backend/venv
 /backend/.idea
+/backend/db.sqlite3
