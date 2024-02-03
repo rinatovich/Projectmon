@@ -1,72 +1,74 @@
-# ProjectMon - Управление информацией о сотрудниках и проектах
+# ProjectMon - Employee and Project Management
 
-Проект ProjectMon представляет собой систему управления информацией о сотрудниках, организациях, проектах и документах. Он реализован с использованием Django и Django REST Framework для backend, а также React для frontend.
+ProjectMon is a system for managing information about employees, organizations, projects, and documents. It is implemented using Django and Django REST Framework for the backend, and React for the frontend.
 
-## Основные функции
+## Key Features
 
-- Регистрация и хранение данных о сотрудниках, включая личные, рабочие и корпоративные документы.
-- Управление информацией о юридических лицах и их реквизитах.
-- Создание и отслеживание проектов с соответствующими документами.
-- Хранение и управление различными типами документов (PDF, Excel, Word и др.).
-- Интеграция с финансовыми данными организаций и банковскими реквизитами.
+- Registration and storage of data about employees, organizations, projects, and documents.
+- Management of information about legal entities and their details.
+- Creation and tracking of projects with corresponding documents.
+- Storage and management of various types of documents (PDF, Excel, Word, etc.).
+- Integration with financial data of organizations and banking details.
 
-## Технологии
+## Technologies
 
-- **Django**: Web-фреймворк для разработки backend.
-- **Django REST Framework**: Инструментарий для создания RESTful API.
-- **React**: Фронтенд-фреймворк.
-- **PostgreSQL**: Система управления базами данных.
-- **HTML, CSS, JavaScript**: Фронтенд технологии.
+- **Django**: Web framework for backend development.
+- **Django REST Framework**: Toolkit for creating RESTful APIs.
+- **React**: Frontend framework.
+- **SQLite**: Database management system.
+- **HTML, CSS, JavaScript**: Frontend technologies.
 
-## Установка и запуск
+## Installation and Run
 
 ### Backend (Django + DRF)
 
-1. Клонировать репозиторий:
+1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/ProjectMon.git
+    git clone https://github.com/rinatovich/ProjectMon.git
     cd ProjectMon/backend
     ```
 
-2. Установить зависимости:
+2. Install dependencies:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-3. Применить миграции:
+3. Apply migrations:
 
     ```bash
     python manage.py migrate
     ```
 
-4. Запустить сервер:
+4. Run the server:
 
     ```bash
     python manage.py runserver
     ```
 
-Проект Django будет доступен по адресу http://127.0.0.1:8000/
+Django project will be available at http://127.0.0.1:8000/
 
 ### Frontend (React)
 
-1. Перейти в директорию frontend:
+1. Navigate to the frontend directory:
 
     ```bash
     cd ../front
     ```
 
-2. Установить зависимости:
+2. Install dependencies:
 
     ```bash
     npm install
     ```
 
-3. Запустить приложение:
+3. Run the application:
 
     ```bash
     npm start
     ```
 
-Проект React будет доступен по адресу http://localhost:3000/
+React project will be available at http://localhost:3000/
+
+## Project Structure
