@@ -1,0 +1,29 @@
+aside{
+    grid-area: n;
+
+    background-color: #000000;
+}
+
+.sidebarList{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.sidebarList li{
+    padding: 10px 0;
+}
+.sidebarList li:hover{
+    background-color: white;
+}
+.sidebarList li:hover a{
+    color: black;
+}
+.sidebarList a{
+    color: white;
+    text-decoration: none;
+}
+.active{
+    color: rgba(255, 233, 6, 0.91) !important;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 233, 6, 0.91);
+}

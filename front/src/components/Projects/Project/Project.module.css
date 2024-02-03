@@ -1,0 +1,10 @@
+.projectContainer{
+    display: flex;
+}
+.projectImgContainer{
+
+}
+
+.projectImg{
+    width: 80px;
+}

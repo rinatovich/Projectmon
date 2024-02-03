@@ -1,0 +1,12 @@
+.persons{
+    height: 70vh;
+}
+.buttonGroup{
+    margin: 20px;
+}
+.buttonGroup a{
+    margin: 0 1em;
+}
+.paginatorGroup{
+    margin: 1em 0;
+}
