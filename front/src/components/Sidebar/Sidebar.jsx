@@ -5,7 +5,7 @@ export default function Sidebar(props){
     const sidebarMenu = [
         {
             id: 1,
-            title: 'Persons',
+            title: 'Entities',
             link: '/persons'
         },
         {

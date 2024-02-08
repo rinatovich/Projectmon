@@ -1,0 +1,66 @@
+.personsContainer{
+    display: flex;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: left;
+    align-items: center;
+}
+.personImageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.personImage{
+    width: 80px;
+}
+
+
+.formGroup{
+    padding: 1em;
+    font-family: Raleway;
+    width: 70vw;
+    margin: 0 auto;
+}
+.formFieldGroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 1em 0;
+}
+.formFieldGroup label{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+.formFieldGroup label input{
+    width: 100%;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-family: Raleway;
+    font-size: 1em;
+    border: 1px solid gray;
+}
+.errorMessage{
+    color: red;
+    font-weight: bold;
+}
+.submit{
+    padding: 0.5em 7em;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    font-size: 1em;
+    font-family: Raleway;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.submit:disabled{
+    background-color: #ecebeb;
+    color: #000000;
+    font-weight: bold;
+    border: 1px solid #131313;
+}
