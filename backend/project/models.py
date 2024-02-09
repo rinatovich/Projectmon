@@ -1,6 +1,7 @@
 from django.db import models
-from django.db.models.signals import pre_save
+from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 
 from core.models.components import Document
 
@@ -54,11 +55,26 @@ class ProjectStageProgress(models.Model):
     total_tasks = models.IntegerField()
     completed_tasks = models.IntegerField(default=0)
 
+    def total_tasks(self):
+        return self.tasks.count()
+
     @property
     def completion_percentage(self):
         if self.total_tasks == 0:
             return 0
         return (self.completed_tasks / self.total_tasks) * 100
+
+
+@receiver(post_save, sender=Task)
+def update_stage_progress(sender, instance, created, **kwargs):
+    if created:
+        stage_progress = instance.stage.progress_instance
+        stage_progress.total_tasks += 1
+        stage_progress.save()
+    elif instance.completed:
+        stage_progress = instance.stage.progress_instance
+        stage_progress.completed_tasks += 1
+        stage_progress.save()
 
 
 class Project(models.Model):
@@ -76,6 +92,12 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, verbose_name='Статус')
 
+    def total_stages(self):
+        return self.stages.count()
+
+    def is_active(self):
+        return self.end_date is None or self.end_date >= timezone.now().date()
+
     def __str__(self):
         return self.title
 
@@ -85,6 +107,8 @@ class Project(models.Model):
 
 
 class ProjectDocument(Document):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='documents', null=True, blank=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='documents')
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='documents', null=True, blank=True)
 
     def __str__(self):
