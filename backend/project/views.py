@@ -1,46 +1,24 @@
+from django.db.models import Q
 from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import generics
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
 from .models import ProjectStage, Task, ProjectDocument, Project
-from .serializers import ProjectStageSerializer, TaskSerializer, ProjectDocumentSerializer, ProjectSerializer
+from .serializers import *
 
 
-class ProjectStageListCreateView(generics.ListCreateAPIView):
-    queryset = ProjectStage.objects.all()
-    serializer_class = ProjectStageSerializer
-
-
-class ProjectStageDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = ProjectStage.objects.all()
-    serializer_class = ProjectStageSerializer
-
-
-class TaskListCreateView(generics.ListCreateAPIView):
-    queryset = Task.objects.all()
-    serializer_class = TaskSerializer
-
-
-class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Task.objects.all()
-    serializer_class = TaskSerializer
-
-
-class ProjectDocumentListCreateView(generics.ListCreateAPIView):
-    queryset = ProjectDocument.objects.all()
-    serializer_class = ProjectDocumentSerializer
-
-
-class ProjectDocumentDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = ProjectDocument.objects.all()
-    serializer_class = ProjectDocumentSerializer
-
-
-class ProjectListCreateView(generics.ListCreateAPIView):
+class ProjectListCreateView(ListCreateAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
+    def get_queryset(self):
+        query = self.request.query_params.get('q', '').upper()
+        return Project.objects.filter(
+            Q(title__icontains=query) | Q(title__icontains=query.lower()))
 
-class ProjectDetailView(generics.RetrieveUpdateDestroyAPIView):
+
+class ProjectRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
