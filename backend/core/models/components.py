@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from django.db import models
 
@@ -14,6 +15,7 @@ class Document(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название документа')
     document_type = models.CharField(max_length=20, choices=DOC_TYPES, verbose_name='Тип документа')
     file = models.FileField(upload_to='documents/', verbose_name='Файл')
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Документ'

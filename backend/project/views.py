@@ -1,11 +1,5 @@
 from django.db.models import Q
-from django.shortcuts import render
-
-# Create your views here.
-from rest_framework import generics
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-
-from .models import ProjectStage, Task, ProjectDocument, Project
 from .serializers import *
 
 

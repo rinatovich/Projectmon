@@ -9,6 +9,8 @@ class LegalEntitySerializer(serializers.ModelSerializer):
 
 
 class DocumentSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Document
-        fields = ['id', 'title', 'document_type', 'file']
+        fields = '__all__'
