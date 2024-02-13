@@ -72,7 +72,7 @@ class Address(models.Model):
 
 
 class LegalEntity(models.Model):
-    name = models.CharField(max_length=255, verbose_name='Название')
+    title = models.CharField(max_length=255, verbose_name='Название')
     ownership_form = models.ForeignKey('OwnershipForm', on_delete=models.CASCADE, verbose_name='Форма принадлежности')
     address = models.ForeignKey('Address', on_delete=models.CASCADE, verbose_name='Адрес')
     # details = models.ForeignKey('Details', on_delete=models.CASCADE, verbose_name='Реквизиты')

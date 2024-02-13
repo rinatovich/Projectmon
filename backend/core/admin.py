@@ -25,16 +25,16 @@ class AddressAdmin(admin.ModelAdmin):
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('get_full_name', 'date_of_birth', 'email', 'phone_number', 'age')
+    list_display = ('get_full_name', 'date_of_birth', 'age')
     search_fields = ('first_name', 'last_name', 'middle_name', 'email', 'phone_number')
     list_filter = ('date_of_birth',)
 
 
 @admin.register(LegalEntity)
 class LegalEntityAdmin(admin.ModelAdmin):
-    list_display = ['name', 'ownership_form', 'address', 'phoneNumber', 'websiteUrl',
+    list_display = ['title', 'ownership_form', 'address', 'phoneNumber', 'websiteUrl',
                     'logo_thumbnail']
-    search_fields = ['name', 'phoneNumber', 'websiteUrl']
+    search_fields = ['title', 'phoneNumber', 'websiteUrl']
 
     # inlines = [EmployeeInline, CorporateDocumentInline]
 

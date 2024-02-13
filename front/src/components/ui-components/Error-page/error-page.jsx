@@ -14,7 +14,7 @@ export default function ErrorPage() {
                         <p className="p-a">
                             Страница не найдена
                         </p>
-                        <a href='/' className={style.back}>... Вернуться на главную</a>
+                        <a href='/Users/User/Desktop/Projectmon/front/public' className={style.back}>... Вернуться на главную</a>
                         <p>
                             <i>{error.statusText || error.message}</i>
                         </p>

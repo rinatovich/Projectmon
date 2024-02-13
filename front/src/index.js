@@ -7,13 +7,14 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import ErrorPage from "./components/Error-page/error-page";
+import ErrorPage from "./components/ui-components/Error-page/error-page";
 import Projects from "./components/Projects/Projects";
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import PersonsContainer from "./components/Persons/PersonsContainer";
 import CreatePerson from "./components/Persons/Person/CreatePerson";
 import EmployeesContainer from "./components/Emploees/EmployeesContainer";
+import Login from "./components/Auth/Login";
 
 const router = createBrowserRouter([
     {
@@ -39,11 +40,6 @@ const router = createBrowserRouter([
             },
         ],
     },
-
-    // {
-    //     path: "/persons",
-    //     element: <PersonsContainer />,
-    // },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -55,7 +51,5 @@ root.render(
     </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

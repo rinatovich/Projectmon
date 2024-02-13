@@ -48,3 +48,11 @@ export const employeeAPI = {
             }})
     }
 }
+export const projectsAPI = {
+    getProjects(currentPage = 1, pageSize=5) {
+        return instance.get(`projects/?page=${currentPage}&page_size=${pageSize}`)
+            .then(response => {
+                return response.data;
+            });
+    },
+}

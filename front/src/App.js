@@ -1,7 +1,7 @@
 import './App.css';
 import {Outlet} from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Navbar from "./components/ui-components/Navbar/Navbar";
+import Sidebar from "./components/ui-components/Sidebar/Sidebar";
 
 
 function App() {

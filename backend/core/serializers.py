@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from core.models.components import LegalEntity, Document
+from core.models.person import Person
 
 
 class LegalEntitySerializer(serializers.ModelSerializer):
@@ -13,4 +14,10 @@ class DocumentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Document
+        fields = '__all__'
+
+
+class PersonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Person
         fields = '__all__'

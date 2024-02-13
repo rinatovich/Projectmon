@@ -9,7 +9,7 @@ import {getCurrentPage, getTotalUsersCount} from "../../redux/persons-selector";
 
 class PersonsContainer extends React.Component {
     componentDidMount() {
-        this.props.getPersons(this.props.currentPage, this.props.pageSize);
+        this.props.getProjects(this.props.currentPage, this.props.pageSize);
     }
     onPageChanged = (pageNumber) => {
         this.props.getPersons(pageNumber, this.props.pageSize);
