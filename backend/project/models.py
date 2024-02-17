@@ -65,16 +65,20 @@ class ProjectStageProgress(models.Model):
         return (self.completed_tasks / self.total_tasks) * 100
 
 
+@receiver(post_save, sender=ProjectStage)
+def create_project_stage_progress(sender, instance, created, **kwargs):
+    if created:
+        ProjectStageProgress.objects.create(stage=instance, total_tasks=0, completed_tasks=0)
+
+
 @receiver(post_save, sender=Task)
 def update_stage_progress(sender, instance, created, **kwargs):
     if created:
-        stage_progress = instance.stage.progress_instance
-        stage_progress.total_tasks += 1
-        stage_progress.save()
-    elif instance.completed:
-        stage_progress = instance.stage.progress_instance
-        stage_progress.completed_tasks += 1
-        stage_progress.save()
+        # Проверяем, существует ли уже экземпляр ProjectStageProgress для этапа проекта
+        if hasattr(instance.stage, 'progress_instance'):
+            stage_progress = instance.stage.progress_instance
+            stage_progress.total_tasks += 1
+            stage_progress.save()
 
 
 class Project(models.Model):
@@ -108,7 +112,7 @@ class Project(models.Model):
 
 class ProjectDocument(Document):
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='documents', null=True, blank=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='documents')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='documents', null=True, blank=True)
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='documents', null=True, blank=True)
 
     def __str__(self):

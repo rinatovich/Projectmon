@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import React from 'react';
-import style from './Entity.module.css'
+import style from './Project.module.css'
 import {personsAPI} from "../../../api/api";
 import {redirect, useNavigate} from "react-router-dom";
 
@@ -114,7 +114,7 @@ function CreatePersonForm() {
     )
 }
 
-export default function Entity(props){
+export default function CreateProjects(props){
     return (
         <div>
             <h1>Создаем персоны</h1>

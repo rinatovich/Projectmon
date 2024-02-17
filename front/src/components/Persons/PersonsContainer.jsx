@@ -1,15 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Persons from "./Persons";
 import {compose} from "redux";
-import {personsReducer, requestPersons, setCurrentPage} from "../../redux/persons-reducer";
+import {requestPersons, setCurrentPage} from "../../redux/reducers/persons-reducer";
 import PreloaderInpage from "../ui-components/Preloader/Preloader-inpage";
-import {getCurrentPage, getTotalUsersCount} from "../../redux/persons-selector";
+import {getCurrentPage, getTotalUsersCount} from "../../redux/selectors/persons-selector";
+import Persons from "./Persons";
 
 
 class PersonsContainer extends React.Component {
     componentDidMount() {
-        this.props.getProjects(this.props.currentPage, this.props.pageSize);
+        this.props.getPersons(this.props.currentPage, this.props.pageSize);
     }
     onPageChanged = (pageNumber) => {
         this.props.getPersons(pageNumber, this.props.pageSize);
@@ -19,13 +19,13 @@ class PersonsContainer extends React.Component {
             <div>
                 {
                     this.props.isFetching ? <PreloaderInpage/> :
-                    <Persons
-                        totalUsersCount={this.props.totalUsersCount}
-                        currentPage={this.props.currentPage}
-                        onPageChanged={this.onPageChanged}
-                        pageSize={this.props.pageSize}
-                        persons={this.props.persons}
-                    />
+                        <Persons
+                            totalUsersCount={this.props.totalUsersCount}
+                            currentPage={this.props.currentPage}
+                            onPageChanged={this.onPageChanged}
+                            pageSize={this.props.pageSize}
+                            persons={this.props.persons}
+                        />
                 }
             </div>
         )

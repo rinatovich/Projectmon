@@ -1,28 +1,33 @@
 import style from './Navbar.module.css'
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+
+
+let routes = [
+    {
+        id: 1,
+        title: "Login",
+        link: "/login",
+    },
+]
 
 export default function Navbar(props){
+    let links_array = routes.map((route) => {
+        return (
+            <li key={route.id}>
+                <NavLink to={route.link} className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? style.activeLink : ""
+                }>
+                    {route.title}
+                </NavLink>
+            </li>
+        );
+    });
     return (
         <nav className={style.navbar}>
             <div className={style.brand}>
-                Projectmon
             </div>
             <ul className={style.navList}>
-                <li>
-                    <Link to={`/persons`}>Persons</Link>
-                </li>
-                <li>
-                    <Link to={`/projects`}>Projects</Link>
-                </li>
-                <li>
-                    <Link to={`/profile`}>Profile</Link>
-                </li>
-                <li>
-                    <Link to={`/about`}>About</Link>
-                </li>
-                <li>
-                    <Link to={`/login`}>Login</Link>
-                </li>
+                {links_array}
             </ul>
         </nav>
     )}

@@ -5,18 +5,13 @@ export default function Sidebar(props){
     const sidebarMenu = [
         {
             id: 1,
-            title: 'Entities',
+            title: 'Работники',
             link: '/persons'
         },
         {
             id: 2,
-            title: 'Projects',
+            title: 'Проекта',
             link: '/projects'
-        },
-        {
-            id: 3,
-            title: 'Emploees',
-            link: '/employees'
         },
     ]
     return (

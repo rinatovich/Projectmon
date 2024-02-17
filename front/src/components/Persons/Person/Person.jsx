@@ -1,4 +1,5 @@
 import style from './Person.module.css'
+import {NavLink} from "react-router-dom";
 
 export default function Person(props){
     return (
@@ -9,22 +10,24 @@ export default function Person(props){
             <div>
                 <div className="name">
                     <strong>Ф.И.О: </strong>
-                    {props.person.first_name? <span>{props.person.first_name} </span> : ''}
-                    {props.person.last_name? <span>{props.person.last_name} </span> : ''}
-                    {props.person.middle_name? <span>{props.person.middle_name} </span> : ''}
+                    <NavLink to = {`/persons/${props.person.id}`}>
+                        {props.person.first_name? <span>{props.person.first_name} </span> : ''}
+                        {props.person.last_name? <span>{props.person.last_name} </span> : ''}
+                        {props.person.middle_name? <span>{props.person.middle_name} </span> : ''}
+                    </NavLink>
                 </div>
                 {
                     props.person.date_of_birth ?
                         <div className="dateOfBirth">
                             <strong>Дата рождения: </strong>
-                            <sapn>{props.person.date_of_birth}</sapn>
+                            <span>{props.person.date_of_birth}</span>
                         </div>: ''
                 }
                 {
                     props.person.age ?
                         <div className="age">
                             <strong>Возраст: </strong>
-                            <sapn>{props.person.age}</sapn>
+                            <span>{props.person.age}</span>
                         </div>: ''
                 }
                 <div className="contacts">

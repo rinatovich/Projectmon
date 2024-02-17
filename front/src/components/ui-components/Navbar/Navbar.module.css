@@ -32,3 +32,7 @@
     background-color: black;
     color: white;
 }
+.activeLink{
+    font-weight: bold;
+    text-decoration: underline;
+}

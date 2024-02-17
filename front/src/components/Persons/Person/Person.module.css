@@ -1,7 +1,7 @@
 .personsContainer{
     display: flex;
     padding: 10px;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     text-align: left;
     align-items: center;
 }
